@@ -4,7 +4,7 @@ pipeline
 	environment
 	{
 		dock = credentials('hosdid')
-		docker-image = 'karthirs/test'
+		docker_image = 'karthirs/test'
 	}
 	stages
 	{
@@ -21,7 +21,7 @@ pipeline
 			{
 				script
 				{	
-				img = docker.build("${docker-image}:latest")
+				img = docker.build("${docker_image}:latest")
 				}
 			}
 		}
