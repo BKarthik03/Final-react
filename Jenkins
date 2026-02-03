@@ -1,0 +1,45 @@
+pipeline
+{
+	agent any
+	environment
+	{
+		dock = credentials('hosdid')
+		docker-image = 'karthirs/test'
+	}
+	stages
+	{
+		stage('link')
+		{
+			steps
+			{		
+			git branch:"main" , url:""
+			} 
+		}
+		stage('doek')	
+		{
+			steps
+			{
+				script
+				{	
+				img = docker.build("${docker-image}:latest")
+				}
+			}
+		}
+		stage("cbjkds")
+
+		{
+			steps
+
+			{
+				script
+				{
+					docker.withRegistry("https://index.docker.io/v1/",'dockerhub')
+					{
+						img.push()
+					}
+				}
+			}		
+		}	
+	}
+	
+}
