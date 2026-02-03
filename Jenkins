@@ -3,7 +3,7 @@ pipeline
 	agent any
 	environment
 	{
-		dock = credentials('hosdid')
+		
 		docker_image = 'karthirs/test'
 	}
 	stages
